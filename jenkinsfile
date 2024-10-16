@@ -1,0 +1,44 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building the web application...'
+                // Example: If you're using Node.js for this app
+                sh 'npm install'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo 'Running tests...'
+                // Run any test command here
+                // This is just a placeholder if you don't have tests
+                sh 'echo "No tests available."'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploying the web application...'
+                // Example deployment step, adjust as needed
+                // If you have a server or cloud service to deploy to, add those steps here
+                sh 'echo "Deployment successful."'
+            }
+        }
+    }
+
+    post {
+        always {
+            echo 'Cleaning up workspace...'
+            cleanWs()
+        }
+        success {
+            echo 'Pipeline completed successfully!'
+        }
+        failure {
+            echo 'Pipeline failed!'
+        }
+    }
+}
